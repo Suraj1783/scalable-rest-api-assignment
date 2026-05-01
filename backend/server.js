@@ -15,6 +15,8 @@ app.get("/", (req, res) => {
   res.send("API Running...");
 });
 
+app.get("/api/v1/auth",authRoutes);
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("DB Connected"))
   .catch(err => console.log(err));
