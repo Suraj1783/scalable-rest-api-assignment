@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import adminRoutes from "./routes/adminRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,8 @@ app.get("/", (req, res) => {
 app.get("/api/v1/auth",authRoutes);
 
 app.use("/api/v1", adminRoutes);
+
+app.use("/api/products", productRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("DB Connected"))
